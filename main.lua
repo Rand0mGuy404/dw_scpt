@@ -14,15 +14,51 @@ local CooldownColor = Color3.new(1,0,0)
 --------------------------------------------------------------------------------------------------------------------------------------
 local Keybinds = {
 	Scan = Enum.KeyCode.Six,
-	Craft = Enum.KeyCode.Seven
+	Craft = Enum.KeyCode.Seven,
+	Persets = Enum.KeyCode.Backquote
 }
---------------------------------------------------------------------------------------------------------------------------------------
 local itemPos,ItemId = 0,"AlrGun"
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 local Player = game.Players.LocalPlayer
 local TextExtraINFO = "NONE"
-
+--------------------------------------------------------------------------------------------------------------------------------------
+local persets = {
+	[Enum.KeyCode.KeypadZero] = function()
+		TextExtraINFO = "Amoxicillin Tablets" ItemId = "PKillers"
+	end,
+	[Enum.KeyCode.KeypadOne] = function()
+		TextExtraINFO = "Commander's Maul" ItemId = "CMMaul"
+	end,
+	[Enum.KeyCode.KeypadTwo] = function()
+		TextExtraINFO = "BL1 (Neloprephine)" ItemId = "SStim"
+	end,
+	[Enum.KeyCode.KeypadThree] = function()
+		TextExtraINFO = "Cocktail Peristhense" ItemId = "HStim"
+	end,
+	[Enum.KeyCode.KeypadFour] = function()
+		TextExtraINFO = "Berserk Injector" ItemId = "BInjector"
+	end,
+	[Enum.KeyCode.KeypadFive] = function()
+		TextExtraINFO = "Juggernaut Kit" ItemId = "JBox"
+	end,
+	[Enum.KeyCode.KeypadSix] = function()
+		TextExtraINFO = "Kitchen Knife" ItemId = "KitKnife"
+	end,
+	[Enum.KeyCode.KeypadSeven] = function()
+		TextExtraINFO = "Poisoned Knife" ItemId = "PKnife"
+	end,
+--[[
+	[Enum.KeyCode.KeypadEight] = function()
+		TextExtraINFO = "" ItemId = ""
+	end,
+	[Enum.KeyCode.KeypadNine] = function()
+		TextExtraINFO = "" ItemId = ""
+	end,
+]]
+}
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 drawer:Add(Player.PlayerGui,function(_)
 	drawer:Property("Color3", (buffer:get("Cooldown")~=true and BaseColor) or CooldownColor )
 	drawer:Property("AlwaysOnTop",true)
@@ -146,6 +182,13 @@ buffer.Callback.Event:Connect(function(HoldType:number,Keycode:Enum.KeyCode)
 					TextExtraINFO = "ITEM: "..next[2]
 				end)
 			end)
+		elseif buffer:get(Keybinds.Persets) == true and HoldType == 1 then
+			local func = persets[Keycode]
+			if func then 
+				buffer:set("Cooldown",true) 
+				Funcs.localSound(752527668,0.1) func() 
+				task.delay(0.1,function() buffer:set("Cooldown",false) end)
+			end
 		end
 	end
 end)
