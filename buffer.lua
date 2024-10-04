@@ -28,15 +28,14 @@ function buffer.new()
 		end)
 	end
 	
-	function core:bindBooleanWait(any,time:number,success:()->(),fail:()->()) : thread
-		return task.spawn(function()
-			local t,step,r = 0,100,true
-			repeat
-				r = self:get(any)
-				t+=1 task.wait(1/step)
-			until t == time*step or r == false
-			if r == false then fail() else success() end
-		end)
+	function core:bindBooleanWait(any,time:number,success:()->(),fail:()->())
+		print("BEGIN!!!")
+		local t,step,r = 0,100,true
+		repeat
+			r = self:get(any)
+			t+=1 task.wait(1/step)
+		until (t >= time*step) or r == false
+		if r == false then fail() else success() end
 	end
 	
 	function core:addTimed(any,lifetime,value)
