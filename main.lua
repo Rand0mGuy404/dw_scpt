@@ -124,7 +124,7 @@ buffer.Callback.Event:Connect(function(HoldType:number,Keycode:Enum.KeyCode)
 		
 		if Keycode == Keybinds.Scan and HoldType == 1 then buffer:set("Cooldown",true)
 			HighlightAll(drawer:GetStorage(),"HighlightExtra",function(inst)
-				if inst:IsA("Humanoid") and inst.Parent:IsA("Model") and inst.Parent.PrimaryPart~= nil and inst.Parent ~= Player.Character then
+				if inst and inst:IsA("Humanoid") and inst.Parent:IsA("Model") and inst.Parent.PrimaryPart~= nil and inst.Parent ~= Player.Character then
 					task.wait(.1)
 					local isPlayer = game.Players:FindFirstChild(inst.Parent.Name) ~= nil
 					local Clr = (isPlayer and PlayerColor) or EnemyColor
