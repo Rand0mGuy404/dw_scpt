@@ -15,7 +15,8 @@ local CooldownColor = Color3.new(1,0,0)
 local Keybinds = {
 	Scan = Enum.KeyCode.Six,
 	Craft = Enum.KeyCode.Seven,
-	Persets = Enum.KeyCode.Backquote
+	Persets = Enum.KeyCode.Backquote,
+	Spawn = Enum.KeyCode.Eight
 }
 local itemPos,ItemId = 0,"AlrGun"
 --------------------------------------------------------------------------------------------------------------------------------------
@@ -28,7 +29,7 @@ local persets = {
 		TextExtraINFO = "Amoxicillin Tablets" ItemId = "PKillers"
 	end,
 	[Enum.KeyCode.KeypadOne] = function()
-		TextExtraINFO = "Commander's Maul" ItemId = "CMMaul"
+		TextExtraINFO = "Kitchen Knife" ItemId = "KitKnife"
 	end,
 	[Enum.KeyCode.KeypadTwo] = function()
 		TextExtraINFO = "BL1 (Neloprephine)" ItemId = "SStim"
@@ -37,25 +38,23 @@ local persets = {
 		TextExtraINFO = "Cocktail Peristhense" ItemId = "HStim"
 	end,
 	[Enum.KeyCode.KeypadFour] = function()
-		TextExtraINFO = "Berserk Injector" ItemId = "BInjector"
+		TextExtraINFO = "PSpray" ItemId = "Pepper Spray"
 	end,
 	[Enum.KeyCode.KeypadFive] = function()
-		TextExtraINFO = "Juggernaut Kit" ItemId = "JBox"
+		TextExtraINFO = "'Maria'" ItemId = "NailedB"
 	end,
 	[Enum.KeyCode.KeypadSix] = function()
-		TextExtraINFO = "Kitchen Knife" ItemId = "KitKnife"
+		TextExtraINFO = "'The Decimator'" ItemId = "RBHammer"
 	end,
 	[Enum.KeyCode.KeypadSeven] = function()
 		TextExtraINFO = "Poisoned Knife" ItemId = "PKnife"
 	end,
---[[
 	[Enum.KeyCode.KeypadEight] = function()
-		TextExtraINFO = "" ItemId = ""
+		TextExtraINFO = "Emergency Airdrop Flare" ItemId = "EFlare"
 	end,
 	[Enum.KeyCode.KeypadNine] = function()
-		TextExtraINFO = "" ItemId = ""
+		TextExtraINFO = "Smoke Launcher" ItemId = "SLauncher"
 	end,
-]]
 }
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
