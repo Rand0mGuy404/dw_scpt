@@ -1,8 +1,9 @@
-local __drawer = loadstring(game:HttpGet("https://raw.githubusercontent.com/IrishBaker/scripts/main/decaying%20winter/key.lua"))()
+local __drawer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/drawer.lua"))()
 local drawer = __drawer.new(workspace.CurrentCamera,__drawer.roots.Terrain)
-local buffer = require(game.ReplicatedStorage.Buffer).new()
-local Funcs = require(game.ReplicatedStorage.Functions)
-local ItemList = require(game.ReplicatedStorage.ItemList)
+local __buffer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/buffer.lua"))()
+local buffer = __buffer.new()
+local Funcs = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/functions.lua"))()
+local ItemList = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/itemlist.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 local BaseColor = Color3.new(0.45, 0, 1)
