@@ -1,9 +1,9 @@
-local __drawer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/drawer.lua"))()
+local __drawer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/main/drawer.lua"))()
 local drawer = __drawer.new(workspace.CurrentCamera,__drawer.roots.Terrain)
-local __buffer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/buffer.lua"))()
+local __buffer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/main/buffer.lua"))()
 local buffer = __buffer.new()
-local Funcs = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/functions.lua"))()
-local ItemList = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/blob/main/itemlist.lua"))()
+local Funcs = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/main/functions.lua"))()
+local ItemList = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rand0mGuy404/dw_scpt/main/itemlist.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
 local BaseColor = Color3.new(0.45, 0, 1)
