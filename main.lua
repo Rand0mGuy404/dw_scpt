@@ -38,7 +38,7 @@ local persets = {
 		TextExtraINFO = "Cocktail Peristhense" ItemId = "HStim"
 	end,
 	[Enum.KeyCode.KeypadFour] = function()
-		TextExtraINFO = "PSpray" ItemId = "Pepper Spray"
+		TextExtraINFO = "Pepper Spray" ItemId = "PSpray"
 	end,
 	[Enum.KeyCode.KeypadFive] = function()
 		TextExtraINFO = "'Maria'" ItemId = "NailedB"
