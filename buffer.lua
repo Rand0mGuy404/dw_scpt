@@ -17,12 +17,12 @@ function buffer.new()
 		
 		local UIS = game:GetService("UserInputService")
 		
-		UIS.InputBegan:Connect(function(input,gameplay)
+		UIS.InputBegan:Connect(function(input,gameplay) if gameplay then return end
 			self.Storage[input.KeyCode] = true
 			self.Callback:Fire(1,input.KeyCode)
 		end)
 		
-		UIS.InputEnded:Connect(function(input,gameplay)
+		UIS.InputEnded:Connect(function(input,gameplay) if gameplay then return end
 			self.Storage[input.KeyCode] = false
 			self.Callback:Fire(0,input.KeyCode)
 		end)
