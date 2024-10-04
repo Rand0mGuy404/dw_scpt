@@ -12,6 +12,11 @@ local PlayerColor = Color3.new(0,0,1)
 local WorkbenchColor = Color3.new(1,1,1)
 local CooldownColor = Color3.new(1,0,0)
 --------------------------------------------------------------------------------------------------------------------------------------
+local Keybinds = {
+	Scan = Enum.KeyCode.Six,
+	Craft = Enum.KeyCode.Seven
+}
+--------------------------------------------------------------------------------------------------------------------------------------
 local itemPos,ItemId = 0,"AlrGun"
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------
@@ -82,7 +87,7 @@ buffer:bindUIS()
 buffer.Callback.Event:Connect(function(HoldType:number,Keycode:Enum.KeyCode)
 	if buffer:get(Enum.KeyCode.LeftAlt) == true and buffer:get("Cooldown")~=true then
 		
-		if Keycode == Enum.KeyCode.Z and HoldType == 1 then buffer:set("Cooldown",true)
+		if Keycode == Keybinds.Scan and HoldType == 1 then buffer:set("Cooldown",true)
 			HighlightAll(drawer:GetStorage(),"HighlightExtra",function(inst)
 				if inst:IsA("Humanoid") and inst.Parent:IsA("Model") and inst.Parent.PrimaryPart~= nil and inst.Parent ~= Player.Character then
 					task.wait(.1)
@@ -106,21 +111,29 @@ buffer.Callback.Event:Connect(function(HoldType:number,Keycode:Enum.KeyCode)
 				return false,nil,nil
 			end)
 			task.delay(1,function() buffer:set("Cooldown",false) end)
-		elseif Keycode == Enum.KeyCode.V and HoldType == 1 then
+		elseif Keycode == Keybinds.Craft and HoldType == 1 then
 			
 			task.spawn(function()
-				buffer:bindBooleanWait(Enum.KeyCode.V,0.25,function()
+				buffer:bindBooleanWait(Keybinds.Craft,0.25,function()
 					local _,WB = pcall(nearestWorkbench,Player.Character.PrimaryPart.Position)
 					WB = WB or workspace.Interactables:FindFirstChild("Workbench")
 					
 					buffer:set("Cooldown",true) 
 					if (WB:GetPivot().Position-Player.Character.PrimaryPart.Position).Magnitude<10 then
+						Funcs.localSound(6676218222,0.1)
+						
 						game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack({
 							[1] = WB,
 							[2] = "workbenchblueprint"..ItemId,
 						}
 						))
-						Funcs.localSound(6676218222,0.1)
+						wait(1.7)
+						local args = {
+							[1] = WB,
+							[2] = "workbench",
+						}
+
+						game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
 					end
 					task.delay(1,function() buffer:set("Cooldown",false) end)
 
