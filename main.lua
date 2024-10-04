@@ -1,4 +1,4 @@
-local __drawer = require(game.ReplicatedStorage.LineDrawer)
+local __drawer = loadstring(game:HttpGet("https://raw.githubusercontent.com/IrishBaker/scripts/main/decaying%20winter/key.lua"))()
 local drawer = __drawer.new(workspace.CurrentCamera,__drawer.roots.Terrain)
 local buffer = require(game.ReplicatedStorage.Buffer).new()
 local Funcs = require(game.ReplicatedStorage.Functions)
