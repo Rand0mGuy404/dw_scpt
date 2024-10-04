@@ -40,6 +40,14 @@ function drawer.new(Camera,Root)
 		end
 	end
 	
+	function Controller:Text(At:Vector3,Text:string,Size:number)
+		self.__self:AddText(At,Text,Size)
+	end
+	
+	function Controller:Line(A:Vector3,B:Vector3)
+		self.__self:AddLine(A,B)
+	end
+	
 	function Controller:GetStorage()
 		return self.Storage
 	end
@@ -111,6 +119,10 @@ function drawer.new(Camera,Root)
 		end
 
 	end
+	
+	function Controller:getBakedCorners()
+		return self.BakedCorners
+	end
 
 	function Controller:bakeUICorners(drawBorders)
 		local Cam : Camera = self.CurrentCamera
@@ -131,7 +143,11 @@ function drawer.new(Camera,Root)
 
 		local CCF = CFrame.lookAlong(pointC,RayC.Unit.Direction)
 
-		self.BakedCorners = {C0=point0,C1=point1,C2=point2,C3=point3,D01=(point1-point0).Magnitude,D02=(point2-point0).Magnitude,CenterCF=CCF}
+		self.BakedCorners = {
+			C0=point0,C1=point1,C2=point2,C3=point3,
+			D01=(point1-point0).Magnitude,D02=(point2-point0).Magnitude,CenterCF=CCF,
+			S0=point1:Lerp(point0,0.5),S1=point0:Lerp(point3,0.5),S2=point3:Lerp(point2,0.5),S3=point2:Lerp(point1,0.5)
+		}
 
 		if drawBorders == true then
 			self.__self:AddLine(point0, point1)
@@ -186,3 +202,5 @@ function drawer.new(Camera,Root)
 
 	return Controller
 end
+
+return drawer
